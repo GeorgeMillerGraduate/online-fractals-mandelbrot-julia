@@ -1,0 +1,46 @@
+MANDELBROT & JULIA — Jenga-Code
+
+Upload the extracted mandelbrot-julia folder to public_html/apps/.
+Open /apps/mandelbrot-julia/ on your domain.
+This is a new, separate application. Other fractal apps stay unchanged.
+No homepage or application-directory links have been modified.
+
+LEFT: Mandelbrot set, z0=0 and each pixel supplies c.
+RIGHT: Julia set, c is the LEFT VIEW'S CENTRE and each pixel supplies z0.
+Both iterate z -> z*z + c, using shared iteration and palette settings.
+
+Only the left image supports zoom/pan. Wheel zooms at the pointer; drag pans;
+click recentres on that point. Buttons zoom about the current centre.
+The right redraws at fixed scale with centre zero and a 3.4-unit shorter axis.
+A centre-only left zoom leaves c unchanged, so its Julia image stays the same.
+Moving the left centre changes c and therefore changes the right Julia set.
+
+Select examples from Starting view. Seahorse boundary is a useful comparison.
+Example parameter coordinates are approximate, not exact special points.
+Shape resemblance varies by coordinate; the two images are not identical.
+Black pixels have not escaped within the finite iteration limit.
+
+Keyboard when the left canvas is focused: +/- zoom, arrows pan, Escape resets.
+The small gold centre guide is optional. There is no orbit dot or animation.
+On mobile use zoom buttons; pinch gestures are not implemented.
+Save pair exports both current rendered canvases plus their parameter caption.
+Stop rendering preserves partially drawn images. Render starts a fresh pair.
+
+HTTP(S) hosting with blob: Web Workers permitted is recommended. No build,
+API key, server-side code or external JavaScript libraries required.
+Optional Google Fonts has system fallbacks. The layout stacks on mobile.
+Up to four rendering workers; high resolutions and iterations cost more time.
+Ordinary double precision only. Minimum horizontal span 1e-11.
+The overview adapts to the initial canvas aspect ratio to show the full set.
+
+CHECK: node tests/compare.test.cjs
+Known orbits, c=0 Julia unit disk, right zoom invariance and shared c linkage.
+
+SIDE-BY-SIDE EDITION
+Large left/right renders with editorial paragraphs and side illustration removed.
+Known Mandelbrot cardioid and period-2 bulb use analytic interior tests.
+Both images render a 4-pixel preview followed by a full pixel pass.
+Smooth colours use a large escape radius and two extra escaped iterations
+before the continuous log-log count is mapped to the palette.
+Julia fits the 3.4-unit shorter-axis frame at a fixed scale, independent of
+Mandelbrot zoom. The centre guide is off by default.
